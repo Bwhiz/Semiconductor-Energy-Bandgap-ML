@@ -31,8 +31,7 @@ We present an approach to help scale down the sizes of descriptors to give a bet
 
 ### 1. Identifying the main features that can completely describe the element/s.
 
-A major challange and objectives in material science is to generate machine learning (ML) models that can accurately, and rapidly predict a property for a given material by using information derived from the material's structure. However, when the right decriptors are available, predicting material properties such as the energy bandgap would take only few seconds or minimal time using an ML Model, instead of consuming several hours, days or even months to perform. To acheive such an objective, one must find features that can map a material structure in unique material properties. The feature descriptors must be unique to each material and feasible to calculate. An ML model can subsequently be trained to translate descriptors into properties i.e perform the mapping of structure against property. _No matter how sophisticated or "deep" the ML models are, they will fail as long as the descriptors are poorly choosen_
-
+A major challange and objectives in material science is to generate machine learning (ML) models that can accurately, and rapidly predict a property for a given material by using information derived from the material's structure. However, when the right decriptors are available, predicting material properties such as the energy bandgap would take only few seconds or minimal time using an ML Model, instead of consuming several hours, days or even months to perform. To acheive such an objective, one must find features that can map a material structure in unique material properties. The feature descriptors must be unique to each material and feasible to calculate. An ML model can subsequently be trained to translate descriptors into properties i.e perform the mapping of structure against property. \_No matter how sophisticated or "deep" the ML models are, they will fail as long as the descriptors are poorly choose
 The quality of descriptors is usually by the ability of the descriptors to train predictive ML models. Additionally the following features can be considered as well.
 
 - Meaningfulness of features
@@ -43,4 +42,4 @@ The quality of descriptors is usually by the ability of the descriptors to train
 - Electronic structure features
 - Ab initio-based features
 
-These decriptors
+These decriptors values are mostly gotten using DFT as they are also called DFT-based descriptors.
