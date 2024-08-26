@@ -24,15 +24,17 @@ Our Main Objective in this project is to Design a machine learning algorithm tha
 
 - Identifying the main features that can completely describe the element/s.
 - Building the dataset based on descriptors.
-- Identifying the Model that would accurately predict the dependent variables.
-- Rescaling the main features to highlight features with utmost importance.
+- Building a model using an Extreme gradient Boosted tree for the prediction of Semiconductor-Energy-Bandgap
+- Reducing the number of input features space in order to critically identify key predictive variables
 
 We present an approach to help scale down the sizes of descriptors to give a better optimization.
 
-### 1. Identifying the main features that can completely describe the element/s.
+### 1. Identifying the main features that can describe the element/s.
 
 A major challange and objectives in material science is to generate machine learning (ML) models that can accurately, and rapidly predict a property for a given material by using information derived from the material's structure. However, when the right decriptors are available, predicting material properties such as the energy bandgap would take only few seconds or minimal time using an ML Model, instead of consuming several hours, days or even months to perform. To acheive such an objective, one must find features that can map a material structure in unique material properties. The feature descriptors must be unique to each material and feasible to calculate. An ML model can subsequently be trained to translate descriptors into properties i.e perform the mapping of structure against property. _No matter how sophisticated or "deep" the ML models are, they will fail as long as the descriptors are poorly choose_
-The quality of descriptors is usually by the ability of the descriptors to train predictive ML models. Additionally the following features can be considered as well.
+The quality of descriptors is usually by the ability of the descriptors to train predictive ML models.
+
+These criteria are important when considering descriptors.
 
 - Meaningfulness of features
 - calculation efficiency
