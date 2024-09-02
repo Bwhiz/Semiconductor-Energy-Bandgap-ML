@@ -4,7 +4,7 @@
 
 ### Abstract
 
-This thesis explores the application of machine learning (ML) to predict critical properties of semiconductor materials, particularly focusing on the energy bandgap, based on their composition and structure. Traditional experimental methods for determining semiconductor properties are resource-intensive and time-consuming, necessitating the use of alternative approaches like ML to expedite the discovery and optimization of materials for electronic applications. By leveraging extensive material databases and advanced ML techniques, such as Extreme Gradient Boosted Trees (XGBoost), we aim to develop robust predictive models. This study emphasizes feature engineering, dataset construction, and model optimization to enhance predictive accuracy, demonstrating that a reduction in feature space can be achieved without compromising model performance. The findings have significant implications for the field of materials science, offering a pathway to more efficient and cost-effective electronic device manufacturing.
+In this study, we demonstrated the application of machine learning (ML) to predict important properties of inorganic semiconductor materials (we will be using Si and Ge in our case), with particular focus on the energy bandgap, based on their composition, structure, and individual unique properties. Historically, experimental methods for determining semiconductor properties were resource-intensive and time-consuming; the use of alternative approaches like ML to expedite the discovery and optimization of materials for electronic applications has contributed to a massive time reduction and cost-effectiveness. In this thesis, we harnessed extensive material databases such as the MaterialsProject database and advanced ML techniques, such as Extreme Gradient Boosted Trees (XGBoost), to aim to develop robust predictive models. This study highlights feature engineering, dataset construction, model optimization (using the Hyper-Parameter Optimization (HPO), which we demonstrated using the 'Optuna' Python library to enhance predictive accuracy), and demonstrating that a reduction in feature space of over 70% can be achieved without compromising model performance. This analysis has significant implications for the field of materials science, offering some insights on the possibility of having a cost-effective and less-time-consuming electronic device manufacturing.
 
 ## 1. Introduction
 
@@ -16,7 +16,7 @@ Machine learning has emerged as a powerful tool in materials science, enabling r
 
 - **Discovery of New Materials**: By analyzing existing datasets, ML algorithms can identify patterns and suggest new semiconductor materials that might have desirable properties, such as higher efficiency or better thermal stability.
 
-- **Process Optimization**: In semiconductor manufacturing, ML is used to optimize processes like deposition, doping, and lithography. ML models can analyze data from manufacturing lines to improve yield, reduce defects, and enhance the overall efficiency of the production process.
+- **Process Optimization**: In semiconductor manufacturing, ML is used to optimize processes like deposition, doping, and lithography.
 
 - **Defect Detection**: ML algorithms can be employed in real-time defect detection in semiconductor wafers during the manufacturing process, reducing wastage and ensuring higher quality products.
 
@@ -25,18 +25,22 @@ Machine learning has emerged as a powerful tool in materials science, enabling r
 The primary objective of this research is to develop a machine learning algorithm capable of predicting the energy bandgap of semiconductor materials based on their structural and compositional features. The specific goals include:
 
 - Identifying key features that can predict the energy bandgap of semiconductors.
+
 - Constructing a comprehensive dataset using descriptors that characterize semiconductor materials.
-- Developing a predictive model using Extreme Gradient Boosted Trees (XGBoost).
+
+- Building and training a predictive model using Extreme Gradient Boosted Trees (XGBoost).
+
 - Evaluating the impact of feature reduction on model performance.
+
 - Providing insights into improving prediction accuracy.
 
 ## 2. Literature Review
 
 ### 2.1 Semiconductor Materials and Their Importance
 
-Semiconductors are materials that have electrical conductivity between that of a conductor (like copper) and an insulator (like glass). They are the foundation of modern electronics, used in devices like transistors, diodes, and integrated circuits. Semiconductors are integral to modern electronic devices, serving as the building blocks for transistors, diodes, and integrated circuits. The unique electrical properties of semiconductors, which lie between conductors and insulators, are largely determined by their energy bandgap. The ability to accurately predict the bandgap of a material is crucial for designing devices with specific electrical characteristics. Traditionally, the study of semiconductor properties has relied on experimental techniques and theoretical simulations, which, while accurate, are often prohibitively time-consuming and costly.
+Semiconductors are materials that have electrical conductivity between that of a conductor (like copper) and an insulator (like glass). They are the foundation of modern electronics, used in devices like transistors, diodes, and integrated circuits. The unique electrical properties of semiconductors, which lie between conductors and insulators, are largely determined by their energy bandgap. The ability to accurately predict the bandgap of a material is crucial for designing devices with specific electrical characteristics.
 
-Integration of ML into semiconductor research and production represents a significant advancement. By leveraging ML algorithms, the semiconductor industry can reduce development time, improve material performance, and streamline manufacturing processes, ultimately leading to more efficient and cost-effective electronic devices.
+Integration of ML into semiconductor research and production represents a significant advancement. By exploring ML algorithms, especially applying the concept to determining the bandgap, the semiconductor industry can reduce development time, improve material performance, and streamline manufacturing processes, ultimately leading to more efficient and cost-effective electronic devices.
 
 ### 2.2 Feature Engineering in Machine Learning
 
@@ -355,7 +359,7 @@ ge_data = pd.read_csv('../data/GermaniumProjectBandgap_dataset.csv')
 
 - #### Separating listed sample in the column to individual column
 
-In our original dataset we had a column '_atomic_number_' whose values as a list is gotten from the concanation of the '_mean_' , '_std_' , '_max_' , '_min_' the following block of code saparates the data into different columns.
+In our original dataset, we had a column 'atomic_number' whose values as a list are gotten from the concatenation of the _'mean' , 'std' , 'max' , 'min_ the following block of code splits the data into different columns.
 
 ```python
 def expand_df(df, cols_to_expand):
