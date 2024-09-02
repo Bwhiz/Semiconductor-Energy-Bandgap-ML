@@ -4,7 +4,7 @@
 
 ### Abstract
 
-In this study, we demonstrated the application of machine learning (ML) to predict important properties of inorganic semiconductor materials (we will be using Si and Ge in our case), with particular focus on the energy bandgap, based on their composition, structure, and individual unique properties. Historically, experimental methods for determining semiconductor properties were resource-intensive and time-consuming; the use of alternative approaches like ML to expedite the discovery and optimization of materials for electronic applications has contributed to a massive time reduction and cost-effectiveness. In this thesis, we harnessed extensive material databases such as the MaterialsProject database and advanced ML techniques, such as Extreme Gradient Boosted Trees (XGBoost), to aim to develop robust predictive models. This study highlights feature engineering, dataset construction, model optimization (using the Hyper-Parameter Optimization (HPO), which we demonstrated using the 'Optuna' Python library to enhance predictive accuracy), and demonstrating that a reduction in feature space of over 70% can be achieved without compromising model performance. This analysis has significant implications for the field of materials science, offering some insights on the possibility of having a cost-effective and less-time-consuming electronic device manufacturing.
+In this study, we demonstrated the application of machine learning (ML) to predict important properties of inorganic semiconductor materials (we will be using Si and Ge in our case), with particular focus on the energy bandgap, based on their composition, structure, and individual unique properties. Historically, experimental methods for determining semiconductor properties were resource-intensive and time-consuming; the use of alternative approaches like ML to expedite the discovery and optimization of materials for electronic applications has contributed to a massive time reduction and cost-effectiveness. In this thesis, we harnessed extensive material databases such as the MaterialsProject database and advanced ML techniques, such as Extreme Gradient Boosted Trees (XGBoost), to aim to develop robust predictive models. This study highlights feature engineering, dataset preprocessing, model optimization (using the Hyper-Parameter Optimization (HPO), which we demonstrated using the 'Optuna' Python library to enhance predictive accuracy), and demonstrating that a reduction in feature space of over 70% can be achieved without compromising model performance. This analysis has significant implications for the field of materials science, offering some insights on the possibility of having a cost-effective and less-time-consuming electronic device manufacturing.
 
 ## 1. Introduction
 
@@ -22,7 +22,7 @@ Machine learning has emerged as a powerful tool in materials science, enabling r
 
 ### 1.2 Objectives
 
-The primary objective of this research is to develop a machine learning algorithm capable of predicting the energy bandgap of semiconductor materials based on their structural and compositional features. The specific goals include:
+The primary objective of this research is to develop a machine learning soltuion capable of predicting the energy bandgap of semiconductor materials based on their structural and compositional features. The specific goals include:
 
 - Identifying key features that can predict the energy bandgap of semiconductors.
 
@@ -48,9 +48,9 @@ Feature engineering is a critical step in building ML models, involving the sele
 
 ## 3. Methodology
 
-### 3.1 Identifying the main features Relevant to predict the energy bandgap of semiconductors (Features Engineering).
+### 3.1 Identifying the main features Relevant to predict the energy bandgap of semiconductors.
 
-A major challange and objectives in material science is to generate machine learning (ML) models that can accurately, and rapidly predict a property for a given material by using information derived from the material's structure. However, when the right decriptors are available, predicting material properties such as the energy bandgap would take only few seconds or minimal time using an ML Model, instead of consuming several hours, days or even months to perform. To acheive such an objective, one must find features that can map a material structure in unique material properties. The feature descriptors must be unique to each material and feasible to calculate. An ML model can subsequently be trained to translate descriptors into properties i.e perform the mapping of structure against property. _No matter how sophisticated or "deep" the ML models are, they will fail as long as the descriptors are poorly choose_
+A major challenge and objectives in material science is to generate machine learning (ML) models that can accurately, and rapidly predict a property for a given material by using information derived from the material's structure. However, when the right decriptors are available, predicting material properties such as the energy bandgap would take only few seconds or minimal time using an ML Model, instead of consuming several hours, days or even months to perform. To acheive such an objective, one must find features that can map a material structure in unique material properties. The feature descriptors must be unique to each material and feasible to calculate. An ML model can subsequently be trained to translate descriptors into properties i.e perform the mapping of structure against property. _No matter how sophisticated or "deep" the ML models are, they will fail as long as the descriptors are poorly choose_
 The quality of descriptors is usually by the ability of the descriptors to train predictive ML models.
 <https://www.google.com/url?q=https%3A%2F%2Fscholar.google.com%2Fcitations%3Fuser%3DNhT7vZIAAAAJ>
 
@@ -68,7 +68,7 @@ In our approach to determining the descriptors, we considered All the features l
 
 ### 3.2 Building the dataset based on descriptors
 
-Clearly, Computative predictions using machine learning requires data in order to build their dataset. These dataset should contain all the features/properties that discribes the materials. These data are usually obtained from open source database such as:
+Clearly, Computative predictions using machine learning requires data in order to build their dataset. These dataset should contain all the features/properties that describes the materials. These data are usually obtained from open source database such as:
 
 - AFLOW
 - MaterialsProject(MP)
@@ -337,7 +337,7 @@ Below are steps using The MaterialsProject database
 
 ### 3.3 Building a model using an Extreme gradient Boosted tree (Xgboost) for the prediction of Semiconductor-Energy-Bandgap
 
-Before building of the dataset it is essential to clean up the dataset. The goal of data cleaning is to improve the quality of the data to ensure its accuracy, consistency, and reliability for analysis. You can find the steps in _src -> data-preprocessing folder_. However here are some important aspect of the preprocessing.
+Before building on the dataset, it is essential to clean up the dataset. The goal of data cleaning is to improve the quality of the data to ensure its accuracy, consistency, and reliability for analysis. You can find the steps in _src -> data-preprocessing folder_. However here are some important aspect of the preprocessing.
 
 - #### importing libraries
 
@@ -438,7 +438,7 @@ The end results of the cleaned dataset is provided in the _data -> cleaned folde
 
 ### 3.5 Building the model
 
-We will be using an Extreme gradient Boosted tree (XGBoost), the reason being that XGBoost is based on gradient boosting, which builds models iteratively, combining weak learners (usually decision trees) into a strong predictive model. This approach allows XGBoost to capture complex patterns in the data that might be missed by simpler models. it also automatically ranks the importance of features, which is crucial in bandgap prediction where certain material properties might have a stronger influence. XGBoost can handle various data types, making it versatile for different datasets encountered in materials science.
+We will be using an Extreme gradient Boosted tree (XGBoost), the reason being that XGBoost is based on gradient boosting, which builds models iteratively, combining weak learners (usually decision trees) into a strong predictive model. This approach allows XGBoost to capture complex patterns in the data that might be missed by simpler models. It also automatically ranks the importance of features, which is crucial in bandgap prediction where certain material properties might have a stronger influence. XGBoost can handle various data types, making it versatile for different datasets encountered in materials science.
 
 #### 3.4.1 Model Development
 
@@ -578,9 +578,9 @@ _fig 4: Predictions vs. Actual Values with the 95 features of matrix._
 
 ### 3.5 Features of importance
 
-In our feature engineering, we used as much descriptive features we could find to efficently map a material structure in its unique material properties. However, this prompt us to use features that have little or no contribution to the determination of this dependent variable.
+In our feature engineering, we used as much descriptive features we could find to efficently map a material structure in its unique material properties. However, this would prompt us to use features that have little or no contribution to the determination of this dependent variable.
 
-Using the dataset we have we can plot the importance chart to see each features contribution rating. This is given below as:
+Using the XGBoost 'plot_importance' method, we can plot a chart to see the importance of each features ranked by their weights in building the resulting model. This is given below as:
 
 ```python
 plt.figure(figsize=(10, 20))
@@ -682,7 +682,7 @@ The ability to predict semiconductor properties using ML has significant implica
 
 ### 5.1 Summary of Findings
 
-This thesis demonstrated the successful application of machine learning to predict the energy bandgap of semiconductor materials. By leveraging extensive material databases and advanced ML techniques, we developed a predictive model that achieved high accuracy while reducing the complexity of the feature space. The results highlight the potential of ML to transform the field of materials science, offering a powerful tool for discovering and optimizing semiconductor materials.
+This project demonstrated the successful application of machine learning to predict the energy bandgap of semiconductor materials. By leveraging extensive material databases and advanced ML techniques, we developed a predictive model that achieved high accuracy while reducing the complexity of the feature space. The results highlight the potential of ML to transform the field of materials science, offering a powerful tool for discovering and optimizing semiconductor materials.
 
 ### 5.2 Future Work
 
